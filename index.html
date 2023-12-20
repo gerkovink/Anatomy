@@ -11,8 +11,8 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Gerko Vink">
-  <meta name="dcterms.date" content="2023-09-28">
-  <title>The anatomy of an Answer</title>
+  <meta name="dcterms.date" content="2023-12-20">
+  <title>The Anatomy of an Answer</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,7 +326,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">The anatomy of an Answer</h1>
+  <h1 class="title">The Anatomy of an Answer</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -342,7 +342,7 @@ Gerko Vink <a href="https://orcid.org/0000-0001-9767-1924" class="quarto-title-a
     </div>
 </div>
 
-  <p class="date">28 Sep 2023</p>
+  <p class="date">20 Dec 2023</p>
 </section>
 <section id="disclaimer" class="slide level2">
 <h2>Disclaimer</h2>
@@ -431,6 +431,121 @@ Gerko Vink <a href="https://orcid.org/0000-0001-9767-1924" class="quarto-title-a
 </div>
 </div>
 </section>
+<section id="being-wrong-about-the-truth" class="slide level2">
+<h2>Being wrong about the truth</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="img/2.%20missingness_problem.png" style="width:90.0%"></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li>The population is the truth</li>
+<li>The sample comes from the population, but is generally smaller in size</li>
+<li>This means that not all cases from the population can be in our sample</li>
+<li>If not all information from the population is in the sample, then our sample may be <em>wrong</em></li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Good questions to ask yourself</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Why is it important that our sample is not wrong?<br></li>
+<li>How do we know that our sample is not wrong?</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="solving-the-missingness-problem" class="slide level2">
+<h2>Solving the missingness problem</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="img/3.%20random_sampling.png" style="width:90.0%"></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li>There are many flavours of sampling</li>
+<li>If we give every unit in the population the same probability to be sampled, we do <strong>random sampling</strong></li>
+<li>The convenience with random sampling is that the missingness problem can be ignored</li>
+<li>The missingness problem would in this case be: <strong>not every unit in the population has been observed in the sample</strong></li>
+</ul>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Hmmm…</strong></p>
+</div>
+<div class="callout-content">
+<p>Would that mean that if we simply observe every potential unit, we would be unbiased about the truth?</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sidestep" class="slide level2">
+<h2>Sidestep</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="img/4.%20sidestep1.png" style="width:90.0%"></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>The problem is a bit larger</p></li>
+<li><p>We have three entities at play, here:</p>
+<ol type="1">
+<li>The truth we’re interested in</li>
+<li>The proxy that we have (e.g.&nbsp;sample)</li>
+<li>The model that we’re running</li>
+</ol></li>
+<li><p>The more features we use, the more we capture about the outcome for the cases in the data</p></li>
+<li><p>The more cases we have, the more we approach the true information <br><br><br> All these things are related to uncertainty. Our model can still yield biased results when fitted to <span class="math inline">\(\infty\)</span> features. Our inference can still be wrong when obtained on <span class="math inline">\(\infty\)</span> cases.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sidestep-1" class="slide level2">
+<h2>Sidestep</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="img/5.%20sidestep2.png" style="width:90.0%"></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>The problem is a bit larger</p></li>
+<li><p>We have three entities at play, here:</p>
+<ol type="1">
+<li>The truth we’re interested in</li>
+<li>The proxy that we have (e.g.&nbsp;sample)</li>
+<li>The model that we’re running</li>
+</ol></li>
+<li><p>The more features we use, the more we capture about the outcome for the cases in the data</p></li>
+<li><p>The more cases we have, the more we approach the true information <br><br><br></p></li>
+</ul>
+<p><strong>Core assumption: all observations are bonafide</strong></p>
+</div>
+</div>
+</section>
+<section id="uncertainty-simplified" class="slide level2">
+<h2>Uncertainty simplified</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><img data-src="img/6.%20Sample_uncertainty.png" style="width:90.0%"></p>
+</div><div class="column" style="width:30%;">
+<p>When we do not have all information …</p>
+<ol type="1">
+<li>We need to accept that we are probably wrong</li>
+<li>We just have to quantify how wrong we are</li>
+</ol>
+<p><br> In some cases we estimate that we are only a bit wrong. In other cases we estimate that we could be very wrong. This is the purpose of testing. <br><br> The uncertainty measures about our estimates can be used to create intervals</p>
+</div>
+</div>
+</section>
 <section id="confidence-in-the-answer" class="slide level2">
 <h2>Confidence in the answer</h2>
 <div class="columns">
@@ -449,6 +564,75 @@ Gerko Vink <a href="https://orcid.org/0000-0001-9767-1924" class="quarto-title-a
 <p>Neyman, J. (1934). On the Two Different Aspects of the Representative Method: The Method of Stratified Sampling and the Method of Purposive Selection. <br> Journal of the Royal Statistical Society Series A: Statistics in Society, 97(4), 558-606.</p>
 </div>
 </section>
+<section id="how-do-we-know-that-our-sample-is-not." class="slide level2">
+<h2>How do we know that our sample is not….</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="img/15.%20replication.png" style="width:90.0%"></p>
+</div><div class="column" style="width:40%;">
+<p>We can replicate our sample.</p>
+<ul>
+<li>A replication would be a new sample from the same population or true data generating model obtained by the same data generating process.</li>
+<li>If we would sample 100 times, we would get 100 different samples</li>
+<li>If we would estimate 100 times, we would get 100 different estimates with 100 different confidence intervals (e.g.&nbsp;95% CI)</li>
+<li>Out of these 100 different intervals, we would expect a nominal coverage. For a 95% CI we’d expect 95 of them to cover the true population value.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="this-is-a-lot-of-work" class="slide level2">
+<h2>This is a lot of work…</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="img/16.%20validation.png" style="width:80.0%"></p>
+</div><div class="column" style="width:40%;">
+<p>Full sampling validation of a model’s inferences is a lot of work.</p>
+<ul>
+<li>it is the most robust way of obtaining inferential validity</li>
+<li>it is not always necessary</li>
+</ul>
+<p>Under some general assumptions, we can use the same data to validate our model’s inferences and predictions.</p>
+<ul>
+<li>these assumptions can be met in practice</li>
+<li>but as soon as assumptions are made, we open the door to errors when these assumptions do not hold</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="assumptions" class="slide level2">
+<h2>Assumptions</h2>
+<p>Take the following definition:</p>
+<center>
+<strong>a thing that is accepted as true or as certain to happen, without proof.</strong>
+</center>
+<p>Assumptions are a statisticians faith. It is often impossible to prove that they hold in practice, but we choose to believe that they do.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Sensitivity analyses</strong></p>
+</div>
+<div class="callout-content">
+<p>I often use computational evaluation techniques to quantify the scope of the impact of assumptions made. For example, we can test the effect of violating assumptions on our results. We then verify if the inferences are sensitive to violations of the assumptions. We can even verify the extend of when assumptions start becoming influential to our inferences.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-holy-trinity" class="slide level2">
+<h2>The holy trinity</h2>
+<p>Whenever I evaluate something, I tend to look at three things:</p>
+<ul>
+<li>bias (how far from the truth)</li>
+<li>uncertainty/variance (how wide is my interval)</li>
+<li>coverage (how often do I cover the truth with my interval)</li>
+</ul>
+<p><br> As a function of model complexity in specific modeling efforts, these components play a role in the bias/variance tradeoff</p>
+<center>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bias_and_variance_contributing_to_total_error.svg/2560px-Bias_and_variance_contributing_to_total_error.svg.png" style="width:40.0%">
+</center>
+</section>
 <section id="on-the-individual-level" class="slide level2">
 <h2>On the individual level</h2>
 <div class="columns">
@@ -466,7 +650,7 @@ Gerko Vink <a href="https://orcid.org/0000-0001-9767-1924" class="quarto-title-a
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong>Be careful</strong></p>
 </div>
 <div class="callout-content">
 <p>Narrower intervals mean less uncertainty.</p>
@@ -591,11 +775,19 @@ Information that is not available but necessary to arrive at the correct answer.
 </ol>
 </section>
 <section>
+<section id="case-1-how-to-evaluate-with-a-truth" class="title-slide slide level1 center">
+<h1>Case 1: How to evaluate with a truth</h1>
+
+</section>
+<section id="scenario" class="slide level2">
+<h2>Scenario</h2>
+</section></section>
+<section>
 <section id="case-1-how-to-evaluate-without-a-truth" class="title-slide slide level1 center">
 <h1>Case 1: How to evaluate without a truth?</h1>
 
 </section>
-<section id="scenario" class="slide level2">
+<section id="scenario-1" class="slide level2">
 <h2>Scenario</h2>
 <p>Let’s assume that we have an incomplete data set and that we can impute (fill in) the incomplete values under multiple candidate models</p>
 <p><strong>Challenge</strong><br> Imputing this data set under one model may yield different results than imputing this data set under another model. Identify the best model!</p>
@@ -632,7 +824,7 @@ Information that is not available but necessary to arrive at the correct answer.
 <h1>Case 2: When you know you’re wrong</h1>
 
 </section>
-<section id="scenario-1" class="slide level2">
+<section id="scenario-2" class="slide level2">
 <h2>Scenario</h2>
 <p>In a survey about research integrity and fraud we surveyed behaviours and practices in the following format.</p>
 <center>
@@ -684,102 +876,9 @@ Information that is not available but necessary to arrive at the correct answer.
 <iframe width="790" height="475" src="https://www.youtube.com/embed/GiPe1OiKQuk?si=JRskAvV-ObldIOfO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
 </iframe>
 </center>
-</section></section>
-<section>
-<section id="case-study" class="title-slide slide level1 center">
-<h1>Case study</h1>
 
-</section>
-<section id="case-1-defensienota" class="slide level2">
-<h2>Case 1: Defensienota</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><img data-src="https://imgs.xkcd.com/comics/machine_learning_2x.png" style="width:80.0%"></p>
-</div><div class="column" style="width:60%;">
-<p><q> Defensie moet operationele data kunnen verkrijgen en die verwerken tot informatie. Onze mensen en systemen gaan meer sensoren gebruiken om in het inzetgebied zicht te krijgen op de omgeving. Door die data te verwerken tot informatie en gericht te delen met andere militairen in de operatie krijgen zij snel een zo volledig mogelijk beeld. Daardoor maken ze tijdens de operatie de juiste keuzes. In dit hele proces moet onze krijgsmacht sneller kunnen schakelen dan potentiële tegenstanders; daarom investeert Defensie ook in moderne ondersteunende systemen en software. Daarbij worden ook technologieën zoals data science en Artificial Intelligence (AI) geïntegreerd in onze processen. Defensie werkt samen met kennisinstellingen, industrie, NAVO en EU om nieuwe kansen op dit vlak te benutten. </q></p>
-</div>
-</div>
-<p><a href="https://www.defensie.nl/onderwerpen/defensienota-2022/lezen">Bron: Defensienota 2022</a></p>
-</section>
-<section id="case-2-flint-water-crisis" class="slide level2">
-<h2>Case 2: Flint water crisis</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="https://www.popsci.com/uploads/2019/03/18/FFPUHFTYCJ3XFSFLJX2Z2KPHP4.png" style="width:80.0%"></p>
-</div><div class="column" style="width:70%;">
-<h3 id="background">Background:</h3>
-<ul>
-<li>In 2014, Flint, Michigan, switched its water source to the Flint River.</li>
-<li>The change led to lead contamination due to the lack of corrosion inhibitors.</li>
-<li>Resulted in a public health crisis with dangerous levels of heavy metals in water.</li>
-</ul>
-<h3 id="dark-data-impact">Dark Data Impact:</h3>
-<ul>
-<li>The switch was motivated by cost-saving but neglected comprehensive data on water quality, infrastructure, and public health.</li>
-<li>Historical data on the Flint River’s pollution and the city’s old infrastructure were overlooked.</li>
-<li>Residents’ complaints and data on water quality were dismissed.</li>
-<li>Independent research indicating elevated lead levels was initially ignored by officials.</li>
-<li>Dark data contributed to delayed responses and increased harm.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="lessons-learned-and-reference" class="slide level2">
-<h2>Lessons Learned and Reference</h2>
-<p><strong>Data Misinterpretation:</strong> - Evidence of lead contamination was not effectively communicated or acted upon.</p>
-<p><strong>Final Action:</strong> Hanna-Attisha et al.&nbsp;used children’s blood lead levels data to evidence increased lead exposure, thereby finally compelling action.</p>
-<p><strong>Key Takeaway:</strong> The Flint water crisis highlights the necessity of utilizing all available data and the dangers of neglecting dark data in decision-making.</p>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Vulnerability of the decision making process</strong></p>
-</div>
-<div class="callout-content">
-<p>This example highlights how compelling evidence can still be ignored if stakeholder management and the data-answer pipeline are not properly governed.</p>
-</div>
-</div>
-</div>
-<div class="footer">
-<p>Hanna-Attisha, M., LaChance, J., Sadler, R. C., &amp; Champney Schnepp, A. (2016). Elevated Blood Lead Levels in Children Associated With the Flint Drinking Water Crisis: A Spatial Analysis of Risk and Public Health Response. American journal of public health, 106(2), 283–290. https://doi.org/10.2105/AJPH.2015.303003</p>
-</div>
-</section>
-<section id="case-3-ibm-watson-for-oncology" class="slide level2">
-<h2>Case 3: IBM Watson for Oncology</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="https://cdn-heamn.nitrocdn.com/QwmNANDJzoOQGYxvvetRZNxDbJRusvGr/assets/images/optimized/rev-e46abfe/accelerationeconomy.com/wp-content/uploads/2022/03/IBM-Watson.png" style="width:80.0%"></p>
-</div><div class="column" style="width:70%;">
-<p>IBM’s Watson for Oncology was touted as a revolutionary AI system that could assist oncologists in diagnosing and treating cancer by providing personalized treatment recommendations. It was expected to analyze vast amounts of medical data, including research papers, clinical trial data, and patient records, to help doctors make informed decisions.</p>
-</div>
-</div>
-</section>
-<section id="discontinued" class="slide level2">
-<h2>Discontinued</h2>
-<ul>
-<li>It worked really well for many cases</li>
-<li>It would kill some patients</li>
-</ul>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Vulnerability of the training process</strong></p>
-</div>
-<div class="callout-content">
-<p>One of the central issues was how Watson was trained. Instead of being fed a diverse and comprehensive set of real patient data, it was often trained on hypothetical patients and synthetic data.</p>
-<p><strong>Essential information</strong> such as detailed patient histories, various unstructured data like doctors’ notes, real-world patient outcomes, and diverse datasets from different populations and geographies were not adequately included in the training dataset.</p>
-<p><strong>Holistic</strong>: Watson for Oncology was making recommendations without a holistic understanding of the patient and the broader medical context.</p>
-</div>
-</div>
-</div>
-
-<img src="mice.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p>Gerko Vink @ AI for Managers - Sep 28, 2023, Utrecht</p>
+<img src="logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p>Gerko Vink @ UU, 20 Dec 2023, Utrecht</p>
 </div>
 </section></section>
     </div>

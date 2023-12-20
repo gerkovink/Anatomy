@@ -1,12 +1,12 @@
 ---
-title: "The anatomy of an Answer"
+title: "The Anatomy of an Answer"
 author: 
   - name: Gerko Vink
     orcid: 0000-0001-9767-1924
     email: g.vink@uu.nl
     affiliations:
       - name: Methodology & Statistics @ Utrecht University
-date: 28 Sep 2023
+date: 20 Dec 2023
 date-format: "D MMM YYYY"
 execute: 
   echo: true
@@ -15,7 +15,7 @@ format:
     theme: [solarized, gerko.scss]
     progress: true
     margin: 0.075
-    logo: mice.png 
+    logo: logo.png 
     toc: false
     toc-depth: 1
     toc-title: Outline
@@ -23,7 +23,7 @@ format:
     scrollable: false
     width: 1200
     reference-location: margin
-    footer: Gerko Vink @ AI for Managers - Sep 28, 2023, Utrecht
+    footer: Gerko Vink @ UU, 20 Dec 2023, Utrecht
     standalone: true
 ---
 
@@ -90,6 +90,108 @@ Some sources of information can already tremendously guide the precision of our 
 Information bridges the answer to the truth. Too little information may lead you to a *false truth*. 
 :::
 
+## Being wrong about the truth
+::::{.columns}
+:::{.column width="40%"}
+![](img/2. missingness_problem.png){width=90%}
+:::
+
+:::{.column width="60%"}
+- The population is the truth
+- The sample comes from the population, but is generally smaller in size
+- This means that not all cases from the population can be in our sample
+- If not all information from the population is in the sample, then our sample may be *wrong*
+
+::: {.callout-note}
+# Good questions to ask yourself
+1. Why is it important that our sample is not wrong?<br>
+2. How do we know that our sample is not wrong?
+:::
+:::
+::::
+
+## Solving the missingness problem
+::::{.columns}
+:::{.column width="40%"}
+![](img/3. random_sampling.png){width=90%}
+:::
+
+:::{.column width="60%"}
+- There are many flavours of sampling
+- If we give every unit in the population the same probability to be sampled, we do **random sampling**
+- The convenience with random sampling is that the missingness problem can be ignored
+- The missingness problem would in this case be: **not every unit in the population has been observed in the sample**
+
+::: {.callout-warning}
+# Hmmm...
+Would that mean that if we simply observe every potential unit, we would be unbiased about the truth?
+:::
+
+:::
+::::
+
+## Sidestep
+::::{.columns}
+:::{.column width="50%"}
+![](img/4. sidestep1.png){width=90%}
+:::
+
+:::{.column width="50%"}
+- The problem is a bit larger
+- We have three entities at play, here:
+
+  1. The truth we're interested in
+  2. The proxy that we have (e.g. sample)
+  3. The model that we're running
+  
+- The more features we use, the more we capture about the outcome for the cases in the data
+- The more cases we have, the more we approach the true information
+<br><br><br>
+All these things are related to uncertainty. Our model can still yield biased results when fitted to $\infty$ features. Our inference can still be wrong when obtained on $\infty$ cases. 
+:::
+::::
+
+## Sidestep
+::::{.columns}
+:::{.column width="50%"}
+![](img/5. sidestep2.png){width=90%}
+:::
+
+:::{.column width="50%"}
+- The problem is a bit larger
+- We have three entities at play, here:
+
+  1. The truth we're interested in
+  2. The proxy that we have (e.g. sample)
+  3. The model that we're running
+  
+- The more features we use, the more we capture about the outcome for the cases in the data
+- The more cases we have, the more we approach the true information
+<br><br><br>
+
+**Core assumption: all observations are bonafide**
+:::
+::::
+
+## Uncertainty simplified
+::::{.columns}
+:::{.column width="70%"}
+![](img/6. Sample_uncertainty.png){width=90%}
+:::
+
+:::{.column width="30%"}
+When we do not have all information ...
+
+1. We need to accept that we are probably wrong
+2. We just have to quantify how wrong we are
+
+<br>
+In some cases we estimate that we are only a bit wrong. In other cases we estimate that we could be very wrong. This is the purpose of testing. 
+<br><br>
+The uncertainty measures about our estimates can be used to create intervals
+:::
+::::
+
 ## Confidence in the answer
 ::::{.columns}
 :::{.column width="60%"}
@@ -110,6 +212,68 @@ If we sample 100 samples from a population, then a *95% CI* will cover the **tru
 Neyman, J. (1934). On the Two Different Aspects of the Representative Method: The Method of Stratified Sampling and the Method of Purposive Selection. <br> Journal of the Royal Statistical Society Series A: Statistics in Society, 97(4), 558-606.
 :::
 
+## How do we know that our sample is not....
+::::{.columns}
+:::{.column width="60%"}
+![](img/15. replication.png){width="90%"}
+:::
+
+::: {.column width="40%"}
+We can replicate our sample. 
+
+- A replication would be a new sample from the same population or true data generating model obtained by the same data generating process.
+- If we would sample 100 times, we would get 100 different samples
+- If we would estimate 100 times, we would get 100 different estimates with 100 different confidence intervals (e.g. 95% CI)
+- Out of these 100 different intervals, we would expect a nominal coverage. For a 95% CI we'd expect 95 of them to cover the true population value. 
+:::
+::::
+
+## This is a lot of work...
+::::{.columns}
+:::{.column width="60%"}
+![](img/16. validation.png){width="80%"}
+:::
+
+::: {.column width="40%"}
+Full sampling validation of a model's inferences is a lot of work. 
+
+- it is the most robust way of obtaining inferential validity
+- it is not always necessary
+
+Under some general assumptions, we can use the same data to validate our model's inferences and predictions.
+
+- these assumptions can be met in practice 
+- but as soon as assumptions are made, we open the door to errors when these assumptions do not hold
+
+:::
+::::
+
+## Assumptions
+Take the following definition:
+
+<center> **a thing that is accepted as true or as certain to happen, without proof.** </center>
+
+Assumptions are a statisticians faith. It is often impossible to prove that they hold in practice, but we choose to believe that they do.
+
+::: {.callout-tip}
+# Sensitivity analyses
+I often use computational evaluation techniques to quantify the scope of the impact of assumptions made. For example, we can test the effect of violating assumptions on our results. We then verify if the inferences are sensitive to violations of the assumptions. We can even verify the extend of when assumptions start becoming influential to our inferences.
+:::
+
+## The holy trinity
+Whenever I evaluate something, I tend to look at three things:
+
+- bias (how far from the truth)
+- uncertainty/variance (how wide is my interval)
+- coverage (how often do I cover the truth with my interval)
+
+<br>
+As a function of model complexity in specific modeling efforts, these components play a role in the bias/variance tradeoff
+
+<center>
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bias_and_variance_contributing_to_total_error.svg/2560px-Bias_and_variance_contributing_to_total_error.svg.png){width=40%}
+</center>
+
 ## On the individual level
 ::::{.columns}
 :::{.column width="60%"}
@@ -124,6 +288,7 @@ Individual intervals are generally wider than confidence intervals
 - This is because it covers inherent uncertainty in the data point on top of sampling uncertainty 
 
 ::: {.callout-warning}
+# Be careful
 Narrower intervals mean less uncertainty. 
 
 It does not mean that the answer is correct!
@@ -250,6 +415,10 @@ For example:
 5. Appealing to a new customer base with only data about existing customers
 6. Mixing bonafide observations with bonafide non-observations
 
+# Case 1: How to evaluate with a truth
+
+## Scenario 
+
 # Case 1: How to evaluate without a truth?
 
 ## Scenario 
@@ -327,93 +496,4 @@ In this case the choice was made to make a **deliberate error**. The estimates o
 <center>
 <iframe width="790" height="475" src="https://www.youtube.com/embed/GiPe1OiKQuk?si=JRskAvV-ObldIOfO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </center>
-
-# Case study
-
-## Case 1: Defensienota
-::::{.columns}
-:::{.column width="40%"}
-![](https://imgs.xkcd.com/comics/machine_learning_2x.png){width=80%}
-:::
-:::{.column width="60%"}
-<q>
-Defensie moet operationele data kunnen verkrijgen en die verwerken tot informatie. Onze mensen en systemen gaan meer sensoren gebruiken om in het inzetgebied zicht te krijgen op de omgeving. Door die data te verwerken tot informatie en gericht te delen met andere militairen in de operatie krijgen zij snel een zo volledig mogelijk beeld. Daardoor maken ze tijdens de operatie de juiste keuzes. In dit hele proces moet onze krijgsmacht sneller kunnen schakelen dan potentiële tegenstanders; daarom investeert Defensie ook in moderne ondersteunende systemen en software. Daarbij worden ook technologieën zoals data science en Artificial Intelligence (AI) geïntegreerd in onze processen. Defensie werkt samen met kennisinstellingen, industrie, NAVO en EU om nieuwe kansen op dit vlak te benutten.
-</q>
-:::
-::::
-
-[Bron: Defensienota 2022](https://www.defensie.nl/onderwerpen/defensienota-2022/lezen)
-
-
-## Case 2: Flint water crisis
-::::{.columns}
-:::{.column width="30%"}
-![](https://www.popsci.com/uploads/2019/03/18/FFPUHFTYCJ3XFSFLJX2Z2KPHP4.png
-){width=80%}
-:::
-:::{.column width="70%"}
-### Background:
-- In 2014, Flint, Michigan, switched its water source to the Flint River.
-- The change led to lead contamination due to the lack of corrosion inhibitors.
-- Resulted in a public health crisis with dangerous levels of heavy metals in water.
-
-### Dark Data Impact:
-- The switch was motivated by cost-saving but neglected comprehensive data on water quality, infrastructure, and public health.
-- Historical data on the Flint River’s pollution and the city’s old infrastructure were overlooked.
-- Residents’ complaints and data on water quality were dismissed.
-- Independent research indicating elevated lead levels was initially ignored by officials.
-- Dark data contributed to delayed responses and increased harm.
-
-:::
-::::
-
-## Lessons Learned and Reference
-
-**Data Misinterpretation:**
-- Evidence of lead contamination was not effectively communicated or acted upon.
-
-**Final Action:**
-Hanna-Attisha et al. used children's blood lead levels data to evidence increased lead exposure, thereby finally compelling action.
-
-**Key Takeaway:**
-The Flint water crisis highlights the necessity of utilizing all available data and the dangers of neglecting dark data in decision-making.
-
-::: callout-warning
-# Vulnerability of the decision making process
-
-This example highlights how compelling evidence can still be ignored if stakeholder management and the data-answer pipeline are not properly governed. 
-:::
-
-::: footer
-Hanna-Attisha, M., LaChance, J., Sadler, R. C., & Champney Schnepp, A. (2016). Elevated Blood Lead Levels in Children Associated With the Flint Drinking Water Crisis: A Spatial Analysis of Risk and Public Health Response. American journal of public health, 106(2), 283–290. https://doi.org/10.2105/AJPH.2015.303003
-:::
-
-## Case 3: IBM Watson for Oncology
-::::{.columns}
-:::{.column width="30%"}
-![](https://cdn-heamn.nitrocdn.com/QwmNANDJzoOQGYxvvetRZNxDbJRusvGr/assets/images/optimized/rev-e46abfe/accelerationeconomy.com/wp-content/uploads/2022/03/IBM-Watson.png){width=80%}
-:::
-:::{.column width="70%"}
-
-IBM's Watson for Oncology was touted as a revolutionary AI system that could assist oncologists in diagnosing and treating cancer by providing personalized treatment recommendations. It was expected to analyze vast amounts of medical data, including research papers, clinical trial data, and patient records, to help doctors make informed decisions.
-:::
-::::
-
-## Discontinued
-- It worked really well for many cases
-- It would kill some patients
-
-::: callout-warning
-# Vulnerability of the training process
-One of the central issues was how Watson was trained. Instead of being fed a diverse and comprehensive set of real patient data, it was often trained on hypothetical patients and synthetic data. 
-
-**Essential information** such as detailed patient histories, various unstructured data like doctors' notes, real-world patient outcomes, and diverse datasets from different populations and geographies were not adequately included in the training dataset.
-
-**Holistic**: Watson for Oncology was making recommendations without a holistic understanding of the patient and the broader medical context.
-:::
-
-
-
-
-
 
