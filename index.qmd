@@ -35,8 +35,8 @@ Scientific references are in the footer. Opinions and figures are my own, AI-gen
 
 ::: callout-tip
 # Materials
-- slides: [www.gerkovink.com/AI4Managers](https://www.gerkovink.com/AI4Managers/new.html)
-- source: [github.com/gerkovink/AI4Managers](https://github.com/gerkovink/AI4Managers)
+- slides: [www.gerkovink.com/Anatomy](https://www.gerkovink.com/AI4Managers/new.html)
+- source: [github.com/gerkovink/Anatomy](https://github.com/gerkovink/AI4Managers)
 :::
 
 
